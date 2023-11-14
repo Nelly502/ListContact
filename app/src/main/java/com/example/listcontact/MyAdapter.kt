@@ -21,6 +21,6 @@ class MyAdapter(private val context : Activity, private val arrayList: ArrayList
         imageView.setImageResource(arrayList[position].imageId)
         username.text = arrayList[position].name
 
-        return super.getView(position, convertView, parent)
+        return view
     }
 }

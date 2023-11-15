@@ -14,7 +14,6 @@ class MyAdapter(private val context : Activity, private val arrayList: ArrayList
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater : LayoutInflater = LayoutInflater.from(context)
         val view : View = inflater.inflate(R.layout.list_item,null);
-
         val imageView : ImageView = view.findViewById(R.id.profile_pic)
         val username : TextView = view.findViewById(R.id.personName)
 

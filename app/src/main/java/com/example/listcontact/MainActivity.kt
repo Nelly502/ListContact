@@ -2,7 +2,13 @@ package com.example.listcontact
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.ContextMenu
 import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView.AdapterContextMenuInfo
+import android.widget.Toast
 import com.example.listcontact.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -55,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.listview.isClickable = true
         binding.listview.adapter = MyAdapter(this, detailArrayList)
+        registerForContextMenu(binding.listview)
         binding.listview.setOnItemClickListener { parent, view, position, id ->
             val name = name[position]
             val phone = phoneno[position]
@@ -69,7 +76,16 @@ class MainActivity : AppCompatActivity() {
             i.putExtra("email", email)
             i.putExtra("imageId", imageId)
             startActivity(i)
-
         }
     }
-}
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+    }
+    }
